@@ -306,7 +306,7 @@ class Ui_MainWindow(object):
         self.actionLRS.setText(_translate("MainWindow", "LRS"))
         self.actionLRS.setToolTip(_translate("MainWindow", "Folder for LRS"))
         self.actionLRS.setShortcut(_translate("MainWindow", "Ctrl+L"))
-import resource_rc
+from . import resources_rc
 
 
 if __name__ == "__main__":
