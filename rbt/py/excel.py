@@ -5,7 +5,7 @@ class Swc():
     Import SWC file
     '''
     def __init__(self,enable = False, SWC_file = None,verbose=False):
-        print(f"Import(enable={enable},verbose={verbose})\n ")
+        print(f"Swc(enable={enable},SWC_file={SWC_file},verbose={verbose})\n ")
         self.SWC_file = SWC_file
         # self.swc = None
         if enable:
