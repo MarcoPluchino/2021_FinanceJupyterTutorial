@@ -6,7 +6,7 @@ class Index():
         sma = (lambda stock,sma:stock.Close.rolling(window).mean())
         name = f"Sma{window}"
         stock[name] = sma(stock,window) 
-        print(f"Added {name}")
+        print(f"Added {name}, {window} finestra")
         return stock
     @classmethod
     def add_rsi(self,stock,length):
@@ -15,7 +15,7 @@ class Index():
         import pandas_ta as pta
         name = 'Rsi'
         stock[name] = pta.rsi(stock['Close'], length = length) # Add Rsi column
-        print(f"Added {name}")
+        print(f"Added {name}, {length} campioni")
         return stock
 # Test
 def test1():
