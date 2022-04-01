@@ -18,9 +18,12 @@ class Index():
         print(f"Added {name}, {length} campioni")
         return stock
     @classmethod
-    def add_stocastich(self,stock):
+    def add_stocastich(self,stock,window_k,window_d):
     # Add Rsi column
-        print("TBD")
+        stock['low_k']    = stock['Close'].rolling(window_k).min()
+        stock['high_k']   = stock['Close'].rolling(window_k).max()
+        stock['%K']     = (stock['Close']-stock['low_k'])*100/(stock['high_k']-stock['low_k'])
+        stock['%D']     = stock['%K'].rolling(window_d).mean()
         return stock
 # Test
 def test1():
@@ -32,6 +35,11 @@ def test1():
     print(stock)
 def test2():
     import pandas as pd
-    #pd.rolling_mean(k, 3)
+    import random
+    stock = pd.DataFrame([])
+    stock['Close'] = pd.Series(random.sample(range(1, 50), 49))
+    stock = Index().add_stocastich(stock,6,3)
+    print(stock)
 if __name__ == '__main__':
-    test1()
+    test2()
+
