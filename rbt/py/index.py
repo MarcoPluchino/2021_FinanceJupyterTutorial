@@ -58,7 +58,7 @@ def atest1():
     stock['Cumsum']         = pd.Series(stock['Close'].diff().cumsum())
     stock['Momentum']       = pd.Series(stock['Close'].pct_change(1))
     stock['Strategy']       = pd.Series(['enable']*size) 
-    stock['Investment']     = pd.Series([Investment_start][0]) + pd.Series([::]) 
+    stock['Investment']     = pd.Series([Investment_start][0]) 
  
  
     print(stock)
