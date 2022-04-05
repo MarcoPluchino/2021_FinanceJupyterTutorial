@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="resource">
+    <file>DENSO.ico</file>
+    <file>build/1x/baseline_build_black_24dp.png</file>
+    <file>info/1x/baseline_info_black_24dp.png</file>
+    <file>flash/1x/baseline_flash_on_black_24dp.png</file>
+    <file>settings/1x/outline_settings_black_24dp.png</file>
+    <file>LOGO.ico</file>
+    <file>stop/1x/baseline_stop_black_24dp.png</file>
+    <file>play/1x/baseline_play_arrow_black_24dp.png</file>
+    <file>usb/1x/baseline_usb_black_24dp.png</file>
+    <file>BLDC.JPG</file>
+    <file>web/1x/outline_language_black_24dp.png</file>
+    <file>folder/1x/baseline_folder_black_24dp.png</file>
+    <file>filepresent/1x/baseline_file_present_black_24dp.png</file>
+    <file>DellOrto.ico</file>
+    <file>DellOrto.ico</file>
+    <file>DellOrto.ico</file>
+  </qresource>
+</RCC>
