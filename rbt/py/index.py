@@ -2,9 +2,9 @@ class Index():
     @classmethod
     def add_sma(self,stock,window):
     # Add Sma column
-        sma         = (lambda stock,sma:stock.Close.rolling(window).mean())
-        name        = f"Sma_{window}"
-        stock[name] = sma(stock,window) 
+        sma                 = (lambda stock,sma:stock.Close.rolling(window).mean())
+        name                = f"Sma_{window}"
+        stock[name]         = sma(stock,window) 
         print(f"Added {name}, {window} campioni")
         return stock
     @classmethod
@@ -12,24 +12,27 @@ class Index():
     # Add Rsi column
     # https://www.roelpeters.be/many-ways-to-calculate-the-rsi-in-python-pandas/
         import pandas_ta as pta
-        name        = f'Rsi_{length}'
-        stock[name] = pta.rsi(stock['Close'], length = length) # Add Rsi column
+        name                = f'Rsi_{length}'
+        stock[name]         = pta.rsi(stock['Close'], length = length) # Add Rsi column
         print(f"Added {name}, {length} campioni")
         return stock
     @classmethod
     def add_stocastich(self,stock,window_k,window_d):
     # Add Rsi column
-        stock['low_k']      = stock['Close'].rolling(window_k).min()
-        stock['high_k']     = stock['Close'].rolling(window_k).max()
-        stock['%K']         = (stock['Close']-stock['low_k'])*100/(stock['high_k']-stock['low_k'])
-        stock['%D']         = stock['%K'].rolling(window_d).mean()
+        stock[f'low_k']      = stock['Close'].rolling(window_k).min()
+        stock[f'high_k']     = stock['Close'].rolling(window_k).max()
+        name1 = f"%K_{window_k}"
+        stock[name1]         = (stock['Close']-stock['low_k'])*100/(stock['high_k']-stock['low_k'])
+        name2 = f"%D_{window_d}"
+        stock[name2]         = stock[name1].rolling(window_d).mean()
         name = f'Stocastic_{window_k,window_d}'
         print(f"Added {name}, {window_k,window_d} campioni")
         return stock
     @classmethod
     def add_momentum(self,stock,window_m):
     # Add momentum index
-        stock['Momentum'] = stock['Close'].pct_change(window_m)
+        name = f'Momentum_{window_m}'
+        stock[name]   = stock['Close'].pct_change(window_m)
         print(f"Added momentum_{window_m}, {window_m} campioni")
         return stock
 # Test
