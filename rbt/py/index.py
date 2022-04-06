@@ -23,7 +23,7 @@ class Index():
         stock['high_k']     = stock['Close'].rolling(window_k).max()
         stock['%K']         = (stock['Close']-stock['low_k'])*100/(stock['high_k']-stock['low_k'])
         stock['%D']         = stock['%K'].rolling(window_d).mean()
-        name = f'stocastic_{window_k,window_d}'
+        name = f'Stocastic_{window_k,window_d}'
         print(f"Added {name}, {window_k,window_d} campioni")
         return stock
     @classmethod
