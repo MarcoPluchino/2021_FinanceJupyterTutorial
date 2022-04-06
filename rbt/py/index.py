@@ -1,5 +1,4 @@
 class Index():
-
     @classmethod
     def add_sma(self,stock,window):
     # Add Sma column
@@ -24,18 +23,21 @@ class Index():
         stock['high_k']     = stock['Close'].rolling(window_k).max()
         stock['%K']         = (stock['Close']-stock['low_k'])*100/(stock['high_k']-stock['low_k'])
         stock['%D']         = stock['%K'].rolling(window_d).mean()
+        name = f'stocastic_{window_k,window_d}'
+        print(f"Added {name}, {window_k,window_d} campioni")
         return stock
     @classmethod
     def add_momentum(self,stock,window_m):
     # Add momentum index
         stock['Momentum'] = stock['Close'].pct_change(window_m)
+        print(f"Added momentum_{window_m}, {window_m} campioni")
         return stock
 # Test
 def test1():
-    import pandas as pd
-    stock = pd.DataFrame([])
-    stock['Close'] = pd.Series(range(10,20))
-    stock = Index().add_sma(stock,7)
+    import pandas as pd                                                     #                                     
+    stock = pd.DataFrame([])                                                #             
+    stock['Close'] = pd.Series(range(10,20))                                #                             
+    stock = Index().add_sma(stock,7)                                        #                     
     print(stock)
 def test2():
     import pandas as pd
@@ -53,17 +55,14 @@ def atest1():
     Investment_start = 1
     wallet = ['BTC-EUR']
     stock                   = pd.DataFrame([],columns=['Close'])
-    stock['Close']          = pd.Series(random.sample(range(1000), size))
-    stock['Diff']           = pd.Series(stock['Close'].diff())
-    stock['Cumsum']         = pd.Series(stock['Close'].diff().cumsum())
-    stock['Momentum']       = pd.Series(stock['Close'].pct_change(1))
-    stock['Strategy']       = pd.Series(['enable']*size) 
-    stock['Investment']     = pd.Series([Investment_start][0]) 
- 
- 
+    stock['Close']          = pd.Series(random.sample(range(1000), size))   # Create random array
+    stock['Diff']           = pd.Series(stock['Close'].diff())              # Diff with previous value
+    stock['Cumsum']         = pd.Series(stock['Close'].diff().cumsum())     # Sum of diff
+    stock['Momentum']       = pd.Series(stock['Close'].pct_change(1))       # Percentage in window
+    stock['Strategy']       = pd.Series(['enable']*size)                    # Strategy status
+    stock['Investment']     = pd.Series([Investment_start][0])              # 
     print(stock)
 
 if __name__ == '__main__':
     # test1()
     atest1()
-
