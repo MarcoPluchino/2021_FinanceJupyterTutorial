@@ -1,1 +1,1 @@
-python .\verification\pydlrt\main.py
+python .\rbt\main.py
